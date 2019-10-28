@@ -4,16 +4,16 @@ pragma solidity >=0.4.22 <0.7.0;
 contract Ballot {
    
     struct Voter {
-        uint weight; // weight is accumulated by delegation
-        bool voted;  // if true, that person already voted
-        address delegate; // person delegated to
-        uint vote;   // index of the voted proposal
+        uint weight; 
+        bool voted;  
+        address delegate; 
+        uint vote;   
     }
 
    
     struct Proposal {
-        bytes32 name;   // short name (up to 32 bytes)
-        uint voteCount; // number of accumulated votes
+        bytes32 name;   
+        uint voteCount; 
     }
 
     address public chairperson;
@@ -98,8 +98,7 @@ contract Ballot {
         proposals[proposal].voteCount += sender.weight;
     }
 
-    /// @dev Computes the winning proposal taking all
-    /// previous votes into account.
+ 
     function winningProposal() public view
             returns (uint winningProposal_)
     {
@@ -112,9 +111,7 @@ contract Ballot {
         }
     }
 
-    // Calls winningProposal() function to get the index
-    // of the winner contained in the proposals array and then
-    // returns the name of the winner
+
     function winnerName() public view
             returns (bytes32 winnerName_)
     {
